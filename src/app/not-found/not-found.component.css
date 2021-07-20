@@ -1,0 +1,19 @@
+.main {
+    display: flex;
+    margin-top: 15%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff8dc;
+    padding: 1rem;
+}
+
+.main > img {
+    margin-bottom: 1rem;
+}
+
+.main > h4 {
+    color: #9c4d5d;
+}
+

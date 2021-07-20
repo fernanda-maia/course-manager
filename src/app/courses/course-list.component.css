@@ -1,0 +1,60 @@
+.main {
+    max-width: 90vw;
+    background-color: #141313;
+    border: solid 1px #a7a7a7;
+    color: #fff;
+    margin: 3rem auto;
+    padding: 1rem 3rem;
+}
+
+h2 {
+    text-align: center;
+    padding: 2rem;
+    font-size: 4rem;
+    letter-spacing: 5px;
+    font-weight: normal;
+    font-family: 'Fredericka the Great', cursive;
+}
+
+.table {
+    margin: 3rem auto;
+    color: white;
+    text-align: center;
+}
+
+thead {
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+th {
+    padding: 1.7rem;
+}
+
+tr {
+    padding: 25rem;
+    border: none;
+    transition: 0.5s;
+}
+
+td {
+    vertical-align: middle;
+    padding: 1.2rem;
+}
+
+tr:hover:not(.col-title) {
+    color: #aae7df;
+    background-color: #222222;
+}
+
+
+.form-control {
+    margin-top: 1rem;
+    background-color: #222222;
+    border: solid 1px #494949;
+    color: #fff;
+}
+
+.form-control:focus {
+    place-content: '';
+}
