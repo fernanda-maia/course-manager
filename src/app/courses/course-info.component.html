@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <h2>Course Info</h2>
 
-    <form #courseForm="ngForm" (submit)="save()">
+    <form #courseForm="ngForm" (submit)="save()" *ngIf="course">
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
@@ -33,7 +33,7 @@
                 <label class="col-sm-4 col-form-label">Price</label>
                 <div class="col-sm-8">
                     <input [(ngModel)]="course.price" name="price" required #coursePrice="ngModel"
-                    type="number"
+                    type="number" min="0"
                     [ngClass]="{'is-invalid': coursePrice.invalid}"
                     class="form-control"/>
     

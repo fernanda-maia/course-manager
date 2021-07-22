@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
 import { Course } from "./course";
 
 @Injectable({
@@ -6,72 +8,35 @@ import { Course } from "./course";
 })
 export class CourseService {
 
-    retrieveAll(): Course[] {
-        return courses;
+    private baseURL: string = 'https://nanda-node-server.herokuapp.com/api/courses';
+
+    constructor(private httpClient: HttpClient) {
+
     }
 
-    retrieveById(id: number): Course {
-        return courses.find((iterator: Course) => iterator.id === id)!;
+    retrieveAll(): Observable<Course[]> {
+        return this.httpClient.get<Course[]>(this.baseURL);
     }
 
-    save(course: Course): void {
+    retrieveById(id: number): Observable<Course> {
+        return this.httpClient.get<Course>(`${this.baseURL}/${id}`);
+    }
+
+    save(course: Course): Observable<Course> {
+        let observable: Observable<Course>;
+
         if(course.id) {
-            const index = courses.findIndex((iterator: Course) => iterator.id === course.id);
-            courses[index] = {...course};
+            observable = this.httpClient.put<Course>(`${this.baseURL}/${course.id}`, course)!
+            
+        } else {
+            observable = this.httpClient.post<Course>(`${this.baseURL}`, course)!
+
         }
+
+        return observable;
+    }
+
+    deleteById(id: number): Observable<any> {
+        return this.httpClient.delete<any>(`${this.baseURL}/${id}`);
     }
 }
-
-
-let courses: Course[] = [
-    {
-        id: 1,
-        name: "Introdução ao Angular",
-        imageUrl: "/assets/images/angular.svg",
-        price: 99.90,
-        code: "ANG123",
-        duration: 50,
-        rating: 4.5,
-        releaseDate: "01/12/2021"
-    },
-    {
-        id: 2,
-        name: "Java Avançado",
-        imageUrl: "/assets/images/java.svg",
-        price: 125.60,
-        code: "JAV123",
-        duration: 90,
-        rating: 5.0,
-        releaseDate: "08/20/2021"
-    },
-    {
-        id: 3,
-        name: "Kotlin - Curso Completo",
-        imageUrl: "/assets/images/kotlin.svg",
-        price: 100.00,
-        code: "KOT123",
-        duration: 120,
-        rating: 3.5,
-        releaseDate: "10/10/2021"
-    },
-    {
-        id: 4,
-        name: "PostgreSQL na prática",
-        imageUrl: "/assets/images/postgresql.svg",
-        price: 75.90,
-        code: "POS123",
-        duration: 90,
-        rating: 3.5,
-        releaseDate: "03/06/2021"
-    },
-    {
-        id: 5,
-        name: "Python para web",
-        imageUrl: "/assets/images/python.svg",
-        price: 180.00,
-        code: "PYT123",
-        duration: 210,
-        rating: 5.0,
-        releaseDate: "12/03/2021"
-    }
-]

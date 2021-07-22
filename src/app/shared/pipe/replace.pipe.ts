@@ -6,8 +6,7 @@ import { Pipe } from "@angular/core";
 })
 export class ReplacePipe implements PipeTransform{
 
-    transform(value: string, char: string, valueToReplace: string) {
-        return value.replace(char, valueToReplace);
+    transform(value: number, local: string, currency: string) {
+        return value.toLocaleString(local, { style: 'currency', currency });
     }
-
 }

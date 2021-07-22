@@ -29,15 +29,20 @@
                     <img src={{course.imageUrl}} alt={{course.id}} height="auto" width="76px">
                 </td>
                 <td>{{course.name | uppercase}}</td>
-                <td>{{course.price}}</td>
-                <td>{{course.code | replace: '3' : '1'}}</td>
-                <td>{{course.duration}}</td>
+                <td>{{course.price | replace: 'pt-BR' : 'BRL'}}</td>
+                <td>{{course.code}}</td>
+                <td>{{course.duration}}min</td>
                 <td>
                     <app-star [rating]="course.rating"></app-star>
                 </td>
                 <td>{{course.releaseDate | date: 'dd/MM/yyyy'}}</td>
                 <td>
-                    <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary">Edit</a>
+                    <a [routerLink]="['/courses/info', course.id]" class="opt-icons">
+                        <img src="https://img.icons8.com/windows/32/ffffff/edit-file.png"/>
+                    </a>
+                    <a [routerLink]="['/courses']" (click)="deleteById(course.id)" class="opt-icons">
+                        <img src="https://img.icons8.com/windows/32/fa314a/delete-forever.png"/>
+                    </a>
                 </td>
             </tr>
         </tbody>
