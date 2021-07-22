@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ReplacePipe } from './pipe/replace.pipe';
 import { StarComponent } from './star/start.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { CourseInfoComponent } from './courses/course-info.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CourseListComponent } from './courses/course-list.component';
 
@@ -18,20 +19,25 @@ import { CourseListComponent } from './courses/course-list.component';
     StarComponent,
     ReplacePipe,
     NavBarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    CourseInfoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot([
       {
+        path: 'courses',
+        component: CourseListComponent
+      },
+      {
+        path: 'courses/info/:id',
+        component: CourseInfoComponent
+      },
+      {
         path: '',
         redirectTo: 'courses',
         pathMatch: 'full'
-      },
-      {
-        path: 'courses',
-        component: CourseListComponent
       },
       {
         path: '**',

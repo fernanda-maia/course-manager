@@ -1,5 +1,5 @@
 .navbar-brand {
-    margin: auto 3rem;
+    margin: auto calc(1.5rem + 1vw);
 }
 
 .navbar-brand > span {
@@ -14,6 +14,32 @@
     width: 3rem;
 }
 
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
 .navbar-collapse {
     margin-right: 3rem;
+}
+
+@media only screen and (max-width: 400px) {
+    .navbar-brand > span { 
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 900px) {
+    .navbar-collapse {
+        margin-right: 0;
+        margin-top: 1rem;
+        background-color: #083e46;
+        font-size: 1.2rem;
+        text-align: center;
+        vertical-align: middle;
+    }
 }

@@ -1,46 +1,46 @@
-<div class="main">
-    <h2>Course List</h2>
-    <div class="form-group row">
-    
-        <div class="col-sm-5">
-            <input [(ngModel)]="filter" class="form-control" placeholder="🔍" 
-            onblur="this.placeholder = '🔍'" 
-            onfocus="this.placeholder = ''"/>
-        </div>
+<h2>Course List</h2>
+<div class="form-group row">
+
+    <div class="col-sm-5">
+        <input [(ngModel)]="filter" class="form-control" placeholder="🔍" 
+        onblur="this.placeholder = '🔍'" 
+        onfocus="this.placeholder = ''"/>
     </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead class="mx-auto" class="bg-dark">
+            <tr class="col-title">
+                <th>Image</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Code</th>
+                <th>Duration</th>
+                <th>Rating</th>
+                <th>Release</th>
+                <th>Options</th>
+            </tr>
+        </thead>
     
-    <div class="table-responsive">
-        <table class="table">
-            <thead class="mx-auto" class="bg-primary">
-                <tr class="col-title">
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Code</th>
-                    <th>Duration</th>
-                    <th>Rating</th>
-                    <th>Release</th>
-                    <th>Options</th>
-                </tr>
-            </thead>
-        
-            <tbody>
-                <tr *ngFor="let course of filteredCourses">
-                    <td>
-                        <img src={{course.imageUrl}} alt={{course.id}} height="auto" width="76px">
-                    </td>
-                    <td>{{course.name | uppercase}}</td>
-                    <td>{{course.price}}</td>
-                    <td>{{course.code | replace: '3' : '1'}}</td>
-                    <td>{{course.duration}}</td>
-                    <td>
-                        <app-star [rating]="course.rating"></app-star>
-                    </td>
-                    <td>{{course.releaseDate | date: 'dd/MM/yyyy'}}</td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
-    
-    </div>
+        <tbody>
+            <tr *ngFor="let course of filteredCourses">
+                <td>
+                    <img src={{course.imageUrl}} alt={{course.id}} height="auto" width="76px">
+                </td>
+                <td>{{course.name | uppercase}}</td>
+                <td>{{course.price}}</td>
+                <td>{{course.code | replace: '3' : '1'}}</td>
+                <td>{{course.duration}}</td>
+                <td>
+                    <app-star [rating]="course.rating"></app-star>
+                </td>
+                <td>{{course.releaseDate | date: 'dd/MM/yyyy'}}</td>
+                <td>
+                    <a [routerLink]="['/courses/info', course.id]" class="btn btn-primary">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 </div>

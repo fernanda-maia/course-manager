@@ -1,0 +1,15 @@
+.main {
+    width: fit-content;
+    max-width: 87%;
+    background-color: #141313;
+    border: solid 1px #a7a7a7;
+    color: #fff;
+    margin: 5rem auto;
+    padding: 1rem 3rem;
+}
+
+@media only screen and (max-width: 400px) {
+    .main {
+        padding: 1rem;
+    }
+}

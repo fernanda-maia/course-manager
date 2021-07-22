@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <h2>Course Info</h2>
+
+    <form #courseForm="ngForm" (submit)="save()">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="course.name" name="name" required #courseName="ngModel"
+                    [ngClass]="{'is-invalid': courseName.invalid}"
+                    class="form-control" />
+    
+                    <div class="invalid-feedback">
+                        <span>Course name is required</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Release Date</label>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="course.releaseDate" name="Release" required #courseRelease="ngModel"
+                    type="date" 
+                    [ngClass]="{'is-invalid': courseRelease.invalid}"
+                    class="form-control"/>
+    
+                    <div class="invalid-feedback">
+                        <span>Invalid Release</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Price</label>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="course.price" name="price" required #coursePrice="ngModel"
+                    type="number"
+                    [ngClass]="{'is-invalid': coursePrice.invalid}"
+                    class="form-control"/>
+    
+                    <div class="invalid-feedback">
+                        <span>Invalid Price</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Duration</label>
+                <div class="col-sm-8">
+                    <input [(ngModel)]="course.duration" name="duration" required #courseDuration="ngModel"
+                    type="number" min="30"
+                    [ngClass]="{'is-invalid': courseDuration.invalid}"
+                    class="form-control"/>
+    
+                    <div class="invalid-feedback">
+                        <span>Invalid Duration</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <button [routerLink]="['/courses']" class="btn btn-outline-danger" type="reset">Cancel</button>
+                <button [disabled]="courseForm.invalid" class="btn btn-success" type="submit">Save</button>
+            </div>
+    
+        </form>
+</div>

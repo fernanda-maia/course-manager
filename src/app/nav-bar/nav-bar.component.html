@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg  navbar-dark bg-dark w-100 ">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" [routerLink]="['/courses']">
       <img src="https://img.icons8.com/pastel-glyph/64/ffffff/cat--v2.png" class="logo-app"/>
       <span>
         Courses Manager
@@ -10,12 +10,13 @@
         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
         aria-expanded="false" aria-label="Toggle navigation">
 
-        <span class="navbar-toggler-icon"></span>
+        <img src="https://img.icons8.com/material-outlined/24/ffffff/menu-2.png" class="menu-icon"/>
+
     </button>
-    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link"  href="#">Courses</a>
+            <a class="nav-link"  [routerLink]="['/courses']" routerLinkActive="active">Courses</a>
           </li>
         </ul>
     </div>
